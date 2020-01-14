@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:400,600,700" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="shortcut icon" href="assets/img/favicon.png" type="image/x-icon">
+    <title>Foodyfy | Search over 500,000+ Recipes</title>
+</head>
+
+<body>
+<div class="container">
+    <header class="header">
+        <img src="assets/img/logo.png" alt="Logo" class="header_logo">
+        <form class="search">
+            <label>
+                <input type="text" class="search_field" placeholder="Search over 500,000+ recipes...">
+            </label>
+            <button class="btn search_btn">
+                <svg class="search_icon">
+                    <use href="/assets/img/icons.svg#icon-magnifying-glass"></use>
+                </svg>
+                <span>Search</span>
+            </button>
+        </form>
+        <div class="likes">
+            <div class="likes_field">
+                <svg class="likes_icon">
+                    <use href="/assets/img/icons.svg#icon-heart"></use>
+                </svg>
+            </div>
+            <div class="likes_panel">
+                <ul class="likes_list">
+
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <div class="results">
+        <ul class="results_list">
+        </ul>
+
+        <div class="results_pages">
+        </div>
+    </div>
+
+
+    <div class="recipe">
+    </div>
+
+
+    <div class="shopping">
+        <h2 class="heading-2">My Shopping List</h2>
+        <ul class="shopping_list">
+        </ul>
+
+        <div class="copyright">
+            &copy; by Christos Ploutarchou <span id="year"></span>| <a href="https://foodyfy.cpdevlabs.com/">Live Demo</a>
+        </div>
+
+    </div>
+</div>
+<script>document.querySelector('#year').textContent = (new Date().getFullYear()).toString()</script>
+</body>
+</html>
