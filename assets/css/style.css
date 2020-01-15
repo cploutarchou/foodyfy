@@ -308,9 +308,9 @@ body {
     list-style: none;
 }
 
-.results__link:link, .results__link:visited,
-.likes__link:link,
-.likes__link:visited {
+.results_link:link, .results_link:visited,
+.likes_link:link,
+.likes_link:visited {
     display: flex;
     align-items: center;
     padding: 1.5rem 3rem;
@@ -319,19 +319,19 @@ body {
     text-decoration: none;
 }
 
-.results__link:hover,
-.likes__link:hover {
+.results_link:hover,
+.likes_link:hover {
     background-color: #F9F5F3;
     transform: translateY(-2px);
 }
 
-.results__link--active,
-.likes__link--active {
+.results_link--active,
+.likes_link--active {
     background-color: #F9F5F3;
 }
 
-.results__fig,
-.likes__fig {
+.results_fig,
+.likes_fig {
     flex: 0 0 5.5rem;
     border-radius: 50%;
     overflow: hidden;
@@ -341,8 +341,8 @@ body {
     backface-visibility: hidden;
 }
 
-.results__fig::before,
-.likes__fig::before {
+.results_fig::before,
+.likes_fig::before {
     content: '';
     display: block;
     height: 100%;
@@ -354,8 +354,8 @@ body {
     opacity: .4;
 }
 
-.results__fig img,
-.likes__fig img {
+.results_fig img,
+.likes_fig img {
     display: block;
     width: 100%;
     height: 100%;
@@ -363,8 +363,8 @@ body {
     transition: all .3s;
 }
 
-.results__name,
-.likes__name {
+.results_name,
+.likes_name {
     font-size: 1.3rem;
     color: #F59A83;
     text-transform: uppercase;
@@ -372,8 +372,8 @@ body {
     margin-bottom: .3rem;
 }
 
-.results__author,
-.likes__author {
+.results_author,
+.likes_author {
     font-size: 1.1rem;
     color: #968B87;
     text-transform: uppercase;
@@ -381,26 +381,26 @@ body {
 }
 
 .results_pages,
-.likes__pages {
+.likes_pages {
     margin-top: 3rem;
     padding: 0 3rem;
 }
 
 .results_pages::after,
-.likes__pages::after {
+.likes_pages::after {
     content: "";
     display: table;
     clear: both;
 }
 
-.results__btn--prev,
-.likes__btn--prev {
+.results_btn--prev,
+.likes_btn--prev {
     float: left;
     flex-direction: row-reverse;
 }
 
-.results__btn--next,
-.likes__btn--next {
+.results_btn--next,
+.likes_btn--next {
     float: right;
 }
 
@@ -409,14 +409,14 @@ body {
     border-top: 1px solid #fff;
 }
 
-.recipe__fig {
+.recipe_fig {
     height: 30rem;
     position: relative;
     transform: scale(1.04) translateY(-1px);
     transform-origin: top;
 }
 
-.recipe__fig::before {
+.recipe_fig::before {
     content: '';
     display: block;
     height: 100%;
@@ -428,14 +428,14 @@ body {
     opacity: .6;
 }
 
-.recipe__img {
+.recipe_img {
     width: 100%;
     display: block;
     height: 100%;
     object-fit: cover;
 }
 
-.recipe__title {
+.recipe_title {
     position: absolute;
     bottom: 0;
     left: 50%;
@@ -449,43 +449,43 @@ body {
     text-align: center;
 }
 
-.recipe__title span {
+.recipe_title span {
     -webkit-box-decoration-break: clone;
     box-decoration-break: clone;
     padding: 1.3rem 2rem;
     background-image: linear-gradient(to right bottom, #FBDB89, #F48982);
 }
 
-.recipe__details {
+.recipe_details {
     display: flex;
     align-items: center;
     padding: 8rem 3rem 3rem 3rem;
 }
 
-.recipe__info {
+.recipe_info {
     font-size: 1.5rem;
     text-transform: uppercase;
     display: flex;
     align-items: center;
 }
 
-.recipe__info:not(:last-child) {
+.recipe_info:not(:last-child) {
     margin-right: 4rem;
 }
 
-.recipe__info-icon {
+.recipe_info-icon {
     height: 2rem;
     width: 2rem;
     fill: #F59A83;
     margin-right: 1rem;
 }
 
-.recipe__info-data {
+.recipe_info-data {
     margin-right: .4rem;
     font-weight: 600;
 }
 
-.recipe__info-buttons {
+.recipe_info-buttons {
     display: flex;
     margin-left: 1.5rem;
     visibility: hidden;
@@ -494,13 +494,13 @@ body {
     transition: all .4s;
 }
 
-.recipe:hover .recipe__info-buttons {
+.recipe:hover .recipe_info-buttons {
     visibility: visible;
     opacity: 1;
     transform: translateY(0);
 }
 
-.recipe__love {
+.recipe_love {
     background-image: linear-gradient(to right bottom, #FBDB89, #F48982);
     border-radius: 50%;
     border: none;
@@ -514,21 +514,21 @@ body {
     justify-content: center;
 }
 
-.recipe__love:hover {
+.recipe_love:hover {
     transform: scale(1.07);
 }
 
-.recipe__love:focus {
+.recipe_love:focus {
     outline: none;
 }
 
-.recipe__love svg {
+.recipe_love svg {
     height: 2.75rem;
     width: 2.75rem;
     fill: #fff;
 }
 
-.recipe__ingredients {
+.recipe_ingredients {
     padding: 4rem 5rem;
     font-size: 1.5rem;
     line-height: 1.4;
@@ -538,7 +538,7 @@ body {
     align-items: center;
 }
 
-.recipe__ingredient-list {
+.recipe_ingredient-list {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-column-gap: 1.5rem;
@@ -547,11 +547,11 @@ body {
     margin-bottom: 3rem;
 }
 
-.recipe__item {
+.recipe_item {
     display: flex;
 }
 
-.recipe__icon {
+.recipe_icon {
     height: 1.8rem;
     width: 1.8rem;
     fill: #F59A83;
@@ -563,19 +563,19 @@ body {
     margin-top: .1rem;
 }
 
-.recipe__count {
+.recipe_count {
     margin-right: .5rem;
     flex: 0 0 auto;
 }
 
-.recipe__directions {
+.recipe_directions {
   padding: 4rem 4rem 5rem;
   display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.recipe__directions-text {
+.recipe_directions-text {
     font-size: 1.5rem;
     text-align: center;
     width: 90%;
@@ -583,7 +583,7 @@ body {
     color: #968B87;
 }
 
-.recipe__by {
+.recipe_by {
     font-weight: 700;
 }
 
@@ -599,7 +599,7 @@ body {
     overflow: scroll;
 }
 
-.shopping__item {
+.shopping_item {
     display: flex;
     align-items: flex-start;
     padding: 1.3rem 0;
@@ -607,7 +607,7 @@ body {
     position: relative;
 }
 
-.shopping__count {
+.shopping_count {
     flex: 0 0 7.5rem;
     padding: .4rem .5rem;
     border: 1px solid #F2EFEE;
@@ -618,7 +618,7 @@ body {
     justify-content: space-between;
 }
 
-.shopping__count input {
+.shopping_count input {
     color: inherit;
     font-family: inherit;
     font-size: 1.2rem;
@@ -628,23 +628,23 @@ body {
     border-radius: 3px;
 }
 
-.shopping__count input:focus {
+.shopping_count input:focus {
     outline: none;
     background-color: #F2EFEE;
 }
 
-.shopping__count p {
+.shopping_count p {
     font-size: 1.2rem;
 }
 
-.shopping__description {
+.shopping_description {
     flex: 1;
     font-size: 1.3rem;
     margin-top: .4rem;
     margin-right: 1.5rem;
 }
 
-.shopping__delete {
+.shopping_delete {
     margin-top: .5rem;
     position: absolute;
     right: 0;
@@ -656,7 +656,7 @@ body {
     transition: all .5s;
 }
 
-.shopping__item:hover .shopping__delete {
+.shopping_item:hover .shopping_delete {
     opacity: 1;
     visibility: visible;
 }
