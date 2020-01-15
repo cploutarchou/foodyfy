@@ -1,0 +1,25 @@
+{
+  "name": "foodyfy",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/js/index.js",
+  "scripts": {
+    "dev": "webpack --mode development",
+    "build": "webpack --mode production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cploutarchou/foodyfy.git"
+  },
+  "author": "Christos Ploutarchou",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cploutarchou/foodyfy/issues"
+  },
+  "homepage": "https://github.com/cploutarchou/foodyfy#readme",
+  "devDependencies": {
+    "webpack": "^4.41.5",
+    "webpack-cli": "^3.3.10"
+  },
+  "dependencies": {}
+}
