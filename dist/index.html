@@ -1,12 +1,70 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:400,600,700" rel="stylesheet">
+    <link href="dist/css/style.css" rel="stylesheet" type="text/css">
+    <link href="dist/img/favicon.ico" rel="shortcut icon" type="image/x-icon">
+    <title>Foodyfy | Search over 500,000+ Recipes</title>
 </head>
+
 <body>
-<script src="js/bundle.js"></script>
+<div class="container">
+    <header class="header">
+        <img alt="Logo" class="header_logo" src="dist/img/logo.png">
+        <form class="search">
+            <label>
+                <input class="search_field" placeholder="Search over 500,000+ recipes..." type="text">
+            </label>
+            <button class="btn search_btn">
+                <svg class="search_icon">
+                    <use href="dist/img/icons.svg#icon-magnifying-glass"></use>
+                </svg>
+                <span>Search</span>
+            </button>
+        </form>
+        <div class="likes">
+            <div class="likes_field">
+                <svg class="likes_icon">
+                    <use href="dist/img/icons.svg#icon-heart"></use>
+                </svg>
+            </div>
+            <div class="likes_panel">
+                <ul class="likes_list">
+
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <div class="results">
+        <ul class="results_list">
+        </ul>
+
+        <div class="results_pages">
+        </div>
+    </div>
+
+
+    <div class="recipe">
+    </div>
+
+
+    <div class="shopping">
+        <h2 class="heading-2">My Shopping List</h2>
+        <ul class="shopping_list">
+        </ul>
+
+        <div class="copyright">
+            &copy; by Christos Ploutarchou <span id="year"></span>| <a href="https://foodyfy.cpdevlabs.com/">Live Demo</a>
+        </div>
+
+    </div>
+</div>
+<script>document.querySelector('#year').textContent = (new Date().getFullYear()).toString()</script>
+<script src="js/bundle.js" type="text/javascript"></script>
 </body>
 </html>
