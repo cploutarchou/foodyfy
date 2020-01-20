@@ -31,7 +31,7 @@
     "url": "git+https://github.com/cploutarchou/foodyfy.git"
   },
   "author": "Christos Ploutarchou",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/cploutarchou/foodyfy/issues"
   },
