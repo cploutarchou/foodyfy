@@ -2,7 +2,7 @@
 
 const getResults = async (query) => {
     if (!('fetch' in window)) {
-        console.error('Fetch API not found, try including the polyfill');
+        console.error(`Fetch API Not Supported. Your browser is not up-to-date. Version:  ${navigator.userAgent}`);
         return;
     }
     await fetch(`https://cors.cpdevlabs.com/http://www.recipepuppy.com/api/?q=${query}`)
@@ -13,9 +13,9 @@ const getResults = async (query) => {
             return response.json();
         })
         .then(async json => {
-            return await console.log(json.results);
+            return console.log(json.results);
         }).catch(onerror => {
-            throw  new Error(`Fetch API not found, try including the polyfill. Error : ${onerror}`);
+            throw  new Error(`Fetch API Error : ${onerror}`);
         })
 };
 
