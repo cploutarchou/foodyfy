@@ -9,7 +9,7 @@ export default class Search {
         this.apiKey = apiKey;
     }
 
-    async getRecipePuppyResults(ingredients, query, cnt) {
+    async getRecipePuppyResults(cnt, ingredients, query,) {
 
         if (cnt <= 10) {
             let page = 1;
@@ -23,7 +23,11 @@ export default class Search {
                 "method": this.method,
                 "headers": {
                     "x-rapidapi-host": this.apiHost,
-                    "x-rapidapi-key": this.apiKey
+                    "x-rapidapi-key": this.apiKey,
+                    "X-XSS-Protection": "1; mode=block",
+                    "X-Frame-Options": "SAMEORIGIN",
+                    "X-Content-Type-Options": "nosniff",
+                    "Strict-Transport-Security": " max-age=31536000; includeSubDomains; preload"
                 }
             })
                 .then(response => {
