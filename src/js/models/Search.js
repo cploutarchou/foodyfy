@@ -34,8 +34,7 @@ export default class Search {
                     return response.json();
                 })
                 .then(async json => {
-                    this.results = json.results;
-                    console.log(json.results);
+                    return json.results;
                 }).catch(onerror => {
                     throw  new Error(`Fetch API Error : ${onerror}`);
                 })
@@ -69,11 +68,13 @@ export default class Search {
                     })
                     .then(async json => {
                         data.push(json.results);
-                        console.log(data);
+
                     }).catch(onerror => {
                         throw  new Error(`Fetch API Error : ${onerror}`);
                     })
             }
+            return this.results = data.flat();
+
         }
     }
 }
