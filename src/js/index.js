@@ -1,8 +1,8 @@
 // Global Application Controller
 import Search from "./models/Search";
-import {RECIPE_API} from "./constants";
+import {RECIPES_API} from "./constants";
 
 let data;
-const recipePuppy = new Search(RECIPE_API.RecipePuppy.url, 'GET', RECIPE_API.RecipePuppy.apiHost, RECIPE_API.RecipePuppy.apiKey);
-data = recipePuppy.getRecipePuppyResults(50, '', '');
+const recipePuppy = new Search(RECIPES_API.RecipePuppy.url, 'GET', RECIPES_API.RecipePuppy.apiHost, RECIPES_API.RecipePuppy.apiKey);
+data = recipePuppy.getRecipePuppyResults(100, '', '');
 data.then(() => console.log(recipePuppy.results));

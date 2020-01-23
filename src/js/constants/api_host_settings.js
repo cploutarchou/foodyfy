@@ -1,7 +1,7 @@
-export const RECIPE_API = {};
+export const RECIPES_API = {};
 export const SETTINGS = {};
 
-RECIPE_API.RecipePuppy = {
+RECIPES_API.RecipePuppy = {
     url: 'https://recipe-puppy.p.rapidapi.com/',
     apiHost: 'recipe-puppy.p.rapidapi.com',
     apiKey: 'ba6857687cmshde324ee2aaaa83bp17b197jsn3e2030e4c0fa'

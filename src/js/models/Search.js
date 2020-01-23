@@ -34,7 +34,7 @@ export default class Search {
                     return response.json();
                 })
                 .then(async json => {
-                    return json.results;
+                    return this.results = json.results;
                 }).catch(onerror => {
                     throw  new Error(`Fetch API Error : ${onerror}`);
                 })
