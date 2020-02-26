@@ -11,15 +11,14 @@ export default class Search {
             apiKey: RECIPES_API.RecipePuppy.apiKey
         };
         this.cnt = cnt;
-        this.ingredients = ingredients;
-        this.query = query;
+        this.ingredients = `&i=${ingredients}`;
+        this.query = `&q=${query}`;
 
     }
 
     async getRecipePuppyResults() {
+
         let recipePuppyFetchInput = (page) => `${this.recipePuppy.url}?p=${page}${this.ingredients}${this.query}`;
-        this.ingredients = " " ? this.ingredients = " " : this.ingredients = `&i=${this.ingredients}`;
-        this.query = " " ? this.query = " " : this.query = `&q=${this.query}`;
         if (this.cnt <= 10) {
             let page = 1;
 
