@@ -1,18 +1,23 @@
+import {RECIPES_API} from '../constants';
+
 export default class Search {
-    constructor(url, method, apiHost, apiKey,query,ingredients,cnt) {
+    constructor(cnt, query, ingredients) {
         // this.query = query;
-        this.url = url;
-        this.method = method;
-        this.apiHost = apiHost;
-        this.apiKey = apiKey;
+
+        this.recipePuppy = {
+            url: RECIPES_API.RecipePuppy.url,
+            method: 'GET',
+            apiHost: RECIPES_API.RecipePuppy.apiHost,
+            apiKey: RECIPES_API.RecipePuppy.apiKey
+        };
         this.cnt = cnt;
         this.ingredients = ingredients;
         this.query = query;
 
     }
 
-
     async getRecipePuppyResults() {
+        let recipePuppyFetchInput = (page) => `${this.recipePuppy.url}?p=${page}${this.ingredients}${this.query}`;
         this.ingredients = " " ? this.ingredients = " " : this.ingredients = `&i=${this.ingredients}`;
         this.query = " " ? this.query = " " : this.query = `&q=${this.query}`;
         if (this.cnt <= 10) {
@@ -22,11 +27,11 @@ export default class Search {
                 console.error(`Fetch API Not Supported. Your browser is not up-to-date. Version:  ${navigator.userAgent}`);
                 return;
             }
-            await fetch(`${this.url}?p=${page}${this.ingredients}${this.query}`, {
-                "method": this.method,
+            await fetch(recipePuppyFetchInput(page), {
+                "method": this.recipePuppy.method,
                 "headers": {
-                    "x-rapidapi-host": this.apiHost,
-                    "x-rapidapi-key": this.apiKey,
+                    "x-rapidapi-host": this.recipePuppy.apiHost,
+                    "x-rapidapi-key": this.recipePuppy.apiKey,
                     "X-XSS-Protection": "1; mode=block",
                     "X-Frame-Options": "SAMEORIGIN",
                     "X-Content-Type-Options": "nosniff",
@@ -48,16 +53,16 @@ export default class Search {
             let i = this.cnt / 10;
             let data = [];
 
-            for (let x = 1; x <= i; x++) {
+            for (let page = 1; page <= i; page++) {
                 if (!('fetch' in window)) {
                     console.error(`Fetch API Not Supported. Your browser is not up-to-date. Version:  ${navigator.userAgent}`);
                     return;
                 }
-                await fetch(`${this.url}?p=${x}${this.ingredients}${this.query}`, {
-                    "method": this.method,
+                await fetch(recipePuppyFetchInput(page), {
+                    "method": this.recipePuppy.method,
                     "headers": {
-                        "x-rapidapi-host": this.apiHost,
-                        "x-rapidapi-key": this.apiKey,
+                        "x-rapidapi-host": this.recipePuppy.apiHost,
+                        "x-rapidapi-key": this.recipePuppy.apiKey,
                         "X-XSS-Protection": "1; mode=block",
                         "X-Frame-Options": "SAMEORIGIN",
                         "X-Content-Type-Options": "nosniff",
