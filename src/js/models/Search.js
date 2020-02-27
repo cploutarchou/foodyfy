@@ -106,7 +106,6 @@ export default class Search {
         try {
             const res = await axios(config);
             this.results = res.data.results;
-            console.log(this.results);
         } catch (e) {
             alert(e);
         }
