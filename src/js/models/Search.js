@@ -1,4 +1,5 @@
 import {RECIPES_API} from '../constants';
+import axios from 'axios';
 
 export default class Search {
     constructor(cnt, query, ingredients) {
@@ -14,7 +15,9 @@ export default class Search {
         this.ingredients = `&i=${ingredients}`;
         this.query = `&q=${query}`;
 
+
     }
+
 
     async getRecipePuppyResults() {
 
@@ -85,6 +88,32 @@ export default class Search {
 
         }
     }
+
+    async getRecipePuppyResultsAxios(noOfItems) {
+        noOfItems = 1;
+        const config = {
+            method: this.recipePuppy.method,
+            url: `${this.recipePuppy.url}?p=${noOfItems}${this.ingredients}${this.query}`,
+            "headers": {
+                "x-rapidapi-host": this.recipePuppy.apiHost,
+                "x-rapidapi-key": this.recipePuppy.apiKey,
+                "X-XSS-Protection": "1; mode=block",
+                "X-Frame-Options": "SAMEORIGIN",
+                "X-Content-Type-Options": "nosniff",
+                "Strict-Transport-Security": " max-age=31536000; includeSubDomains; preload"
+            }
+        };
+        try {
+            const res = await axios(config);
+            this.results = res.data.results;
+            console.log(this.results);
+        } catch (e) {
+            alert(e);
+        }
+
+
+    }
+
 }
 
 
