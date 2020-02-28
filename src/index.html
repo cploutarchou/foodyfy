@@ -12,62 +12,63 @@
 </head>
 
 <body>
-    <div class="container">
-        <header class="header">
-            <img alt="Logo" class="header_logo" id="logo" src="images/logo.png">
-            <form class="search">
-                <label>
-                    <input type="text" class="search_field" placeholder="Search over 500,000+ recipes...">
-                </label>
-                <button class="btn search_btn">
-                    <svg class="search_icon">
-                        <use href="images/icons.svg#icon-magnifying-glass"></use>
-                    </svg>
-                    <span>Search</span>
-                </button>
-            </form>
-            <div class="likes">
-                <div class="likes_field">
-                    <svg class="likes_icon">
-                        <use href="images/icons.svg#icon-heart"></use>
-                    </svg>
-                </div>
-                <div class="likes_panel">
-                    <ul class="likes_list">
-
-                    </ul>
-                </div>
+<div class="container">
+    <header class="header">
+        <img alt="Logo" class="header_logo" id="logo" src="images/logo.png">
+        <form class="search">
+            <label>
+                <input type="text" class="search_field" placeholder="Search over 500,000+ recipes...">
+            </label>
+            <button class="btn search_btn">
+                <svg class="search_icon">
+                    <use href="images/icons.svg#icon-magnifying-glass"></use>
+                </svg>
+                <span>Search</span>
+            </button>
+        </form>
+        <div class="likes">
+            <div class="likes_field">
+                <svg class="likes_icon">
+                    <use href="images/icons.svg#icon-heart"></use>
+                </svg>
             </div>
-        </header>
+            <div class="likes_panel">
+                <ul class="likes_list">
 
-        <div class="results">
-            <ul class="results_list">
-            </ul>
-
-            <div class="results_pages">
+                </ul>
             </div>
         </div>
+    </header>
 
+    <div class="results">
+        <ul class="results_list">
+        </ul>
 
-        <div class="recipe">
-        </div>
-
-
-        <div class="shopping">
-            <h2 class="heading-2">My Shopping List</h2>
-            <ul class="shopping_list">
-            </ul>
-
-            <div class="copyright">
-                &copy; by Christos Ploutarchou <span id="year"></span>| <a href="https://foodyfy.cpdevlabs.com/">Live
-                    Demo</a>
-            </div>
-
+        <div class="results_pages">
         </div>
     </div>
-    <script>
-        document.querySelector('#year').textContent = (new Date().getFullYear()).toString()
-    </script>
+
+
+    <div class="recipe">
+
+    </div>
+
+
+    <div class="shopping">
+        <h2 class="heading-2">My Shopping List</h2>
+        <ul class="shopping_list">
+        </ul>
+
+        <div class="copyright">
+            &copy; by Christos Ploutarchou <span id="year"></span>| <a href="https://foodyfy.cpdevlabs.com/">Live
+            Demo</a>
+        </div>
+
+    </div>
+</div>
+<script>
+    document.querySelector('#year').textContent = (new Date().getFullYear()).toString()
+</script>
 </body>
 
 </html>
