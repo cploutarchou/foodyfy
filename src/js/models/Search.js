@@ -84,7 +84,7 @@ export default class Search {
                         throw  new Error(`Fetch API Error : ${onerror}`);
                     })
             }
-            return this.results = data.flat();
+            return this.results = data.flat()
 
         }
     }

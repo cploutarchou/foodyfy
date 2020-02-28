@@ -16,14 +16,15 @@ const controlSearch = async () => {
 
     if (query) {
         // 2) New Search object and add to the state
-        state.search = new Search(100, query, '');
+        state.search = new Search(30, query, '');
 
         // 3) Prepare UI For search results
 
         // 4 ) Search for recipes
         await state.search.getRecipePuppyResults();
         // 5) Render results on UI
-        console.log(state.search.results)
+        console.log(state.search.results);
+        searchView.printResults(state.search.results);
     }
 
 };

@@ -7,5 +7,6 @@
  **/
 export const domElements = {
     searchForm: document.querySelector('.search'),
-    searchInput: document.querySelector('.search_field')
+    searchInput: document.querySelector('.search_field'),
+    searchResultList: document.querySelector('.results_list')
 };
