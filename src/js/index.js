@@ -19,7 +19,8 @@ const controlSearch = async () => {
         state.search = new Search(30, query, '');
 
         // 3) Prepare UI For search results
-
+        searchView.clearInput();
+        searchView.clearResults();
         // 4 ) Search for recipes
         await state.search.getRecipePuppyResults();
         // 5) Render results on UI
