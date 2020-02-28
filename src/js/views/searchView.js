@@ -1,24 +1,27 @@
-import {domElements} from './base';
+import {domElements, validURL} from './base';
 
 export const getInput = () => domElements.searchInput.value;
 
 const printRecipe = recipe => {
     const markup = `
-     <li><a class="results__link results__link" href="${recipe.href}">
-                        <figure class="results__fig">
+     <li><a class="results_link" href="${recipe.href}">
+                        <figure class="results_fig">
                             <img src="${recipe.thumbnail}" alt="${recipe.title}">
                         </figure>
-                        <div class="results__data">
-                            <h4 class="results__name">${recipe.title}</h4>
-                            <p class="results__author"></p>
+                        <div class="results_data">
+                            <h4 class="results_name">${recipe.title}</h4>
+                            <p class="results_author">${recipe.href}}</p>
                         </div>
                     </a>
  </li>
 `;
     domElements.searchResultList.insertAdjacentHTML('beforeend', markup);
 };
+
 export const printResults = recipes => {
-    if (recipes.thumbnail !== '')
-        recipes.forEach(printRecipe);
+    recipes.forEach(((e) => {
+        if (validURL(e.thumbnail))
+            printRecipe(e);
+    }));
 
 };

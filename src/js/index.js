@@ -23,7 +23,7 @@ const controlSearch = async () => {
         // 4 ) Search for recipes
         await state.search.getRecipePuppyResults();
         // 5) Render results on UI
-        console.log(state.search.results);
+        // console.log(state.search.results);
         searchView.printResults(state.search.results);
     }
 
