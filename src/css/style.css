@@ -376,7 +376,7 @@ body {
 .likes_author {
     font-size: 1.1rem;
     color: #968B87;
-    text-transform: uppercase;
+    text-transform: lowercase;
     font-weight: 600;
 }
 
@@ -734,14 +734,6 @@ body {
     text-transform: uppercase;
     font-weight: 600;
     margin-bottom: 0.3rem;
-}
-
-.results_author,
-.likes_author {
-    font-size: 1.1rem;
-    color: #968b87;
-    text-transform: uppercase;
-    font-weight: 600;
 }
 
 .results_pages,

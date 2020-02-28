@@ -10,7 +10,7 @@ const printRecipe = recipe => {
                         </figure>
                         <div class="results_data">
                             <h4 class="results_name">${recipe.title}</h4>
-                            <p class="results_author">${recipe.href}}</p>
+                            <p class="results_author">${recipe.author}</p>
                         </div>
                     </a>
  </li>
@@ -20,8 +20,10 @@ const printRecipe = recipe => {
 
 export const printResults = recipes => {
     recipes.forEach(((e) => {
-        if (validURL(e.thumbnail))
-            printRecipe(e);
+        if (validURL(e.thumbnail)) {
+            e.author = e.href.split('/')[2].replace('www.','');
+            printRecipe(e)
+        }
     }));
 
 };
