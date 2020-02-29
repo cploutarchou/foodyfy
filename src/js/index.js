@@ -16,17 +16,17 @@ const controlSearch = async () => {
 
     if (query) {
         // 2) New Search object and add to the state
-        state.search = new Search(50, query, '');
+        state.search = new Search(100, query, '');
 
         // 3) Prepare UI For search results
         searchView.clearInput();
         searchView.clearResults();
-        loader(domElements.resultArea,true);
+        loader(domElements.resultArea, true);
         // 4 ) Search for recipes
         await state.search.getRecipePuppyResults();
         // 5) Render results on UI
         // console.log(state.search.results);
-        loader(domElements.resultArea,false);
+        loader(domElements.resultArea, false);
         searchView.printResults(state.search.results);
     }
 

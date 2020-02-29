@@ -24,16 +24,20 @@ const printRecipe = recipe => {
     domElements.searchResultList.insertAdjacentHTML('beforeend', markup);
 };
 
-export const printResults = recipes => {
-    let itemCount = 0;
-    recipes.forEach(((e) => {
-        if (validURL(e.thumbnail)) {
+export const printResults = (recipes, page = 2, resPerPage = 10) => {
+    const start = (page - 1) * resPerPage;
+    const end = page * resPerPage;
+    recipes.slice(start, end).forEach((e)=>{
+        if (validURL(e.thumbnail)){
             e.author = e.href.split('/')[2].replace('www.', '');
             printRecipe(e);
-            itemCount++;
+        }else {
+            e.author = e.href.split('/')[2].replace('www.', '');
+            e.thumbnail = 'images/no-image.png';
+            printRecipe(e);
         }
-    }));
-    console.log(itemCount);
+
+    });
 };
 
 /*
