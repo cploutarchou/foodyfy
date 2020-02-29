@@ -8,7 +8,12 @@
 export const domElements = {
     searchForm: document.querySelector('.search'),
     searchInput: document.querySelector('.search_field'),
+    resultArea: document.querySelector('.results'),
     searchResultList: document.querySelector('.results_list')
+};
+
+export const elementStrings = {
+    loader: 'lds-roller'
 };
 
 export const validURL = (str) => {
@@ -20,3 +25,15 @@ export const validURL = (str) => {
         '(\\#[-a-z\\d_]*)?$', 'i'); // fragment locator
     return !!pattern.test(str);
 };
+
+export const loader = (parentElement, isActive) => {
+
+    if (isActive) {
+        let loaderHtml = `<div class="${elementStrings.loader}"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>`;
+        parentElement.insertAdjacentHTML('afterbegin', loaderHtml);
+    } else {
+        const loader = document.querySelector(`.${elementStrings.loader}`);
+        if (loader) loader.parentElement.removeChild(loader);
+    }
+};
+
