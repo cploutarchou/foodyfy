@@ -33,10 +33,8 @@ const printRecipe = recipe => {
 const createPaginationButtons = (page, type) => `         
          
                  <button class="btn-inline results_btn--${type}" data-goto="${type === 'prev' ? page - 1 : page + 1}">
-                    <svg class="search_icon">
-                        <use href="img/icons.svg#icon-triangle-${type === 'prev' ? 'left' : 'next'}"></use>
-                    </svg>
                     <span>Page${type === 'prev' ? page - 1 : page + 1}</span>
+                    <span  class="fa fa-arrow-circle-${type === 'prev' ? 'left' : 'right'}"></span>
                 </button>`;
 
 const renderPaginationButtons = (page, resultNumber, resultsPerPage) => {
@@ -47,10 +45,12 @@ const renderPaginationButtons = (page, resultNumber, resultsPerPage) => {
             //Show only button go to next page
             button = createPaginationButtons(page, 'next');
             break;
-        case page === pages:
+        case page < pages:
             //Show both buttons previous / next
-            button = `${createPaginationButtons(page, 'next')}
-            ${createPaginationButtons(page, 'prev')}`;
+            button = `
+            ${createPaginationButtons(page, 'next')}
+            ${createPaginationButtons(page, 'prev')}`
+            ;
 
             break;
         case page === pages && pages > 1:
@@ -63,7 +63,7 @@ const renderPaginationButtons = (page, resultNumber, resultsPerPage) => {
 
 };
 
-export const printResults = (recipes, page = 1, resPerPage = 10) => {
+export const printResults = (recipes, page = 2, resPerPage = 10) => {
 
     //render results of current page
     const start = (page - 1) * resPerPage;
