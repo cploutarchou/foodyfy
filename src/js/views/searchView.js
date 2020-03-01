@@ -24,20 +24,64 @@ const printRecipe = recipe => {
     domElements.searchResultList.insertAdjacentHTML('beforeend', markup);
 };
 
-export const printResults = (recipes, page = 2, resPerPage = 10) => {
+/**
+ *
+ * @param page
+ * @param type
+ * @returns {string}
+ */
+const createPaginationButtons = (page, type) => `         
+         
+                 <button class="btn-inline results_btn--${type}" data-goto="${type === 'prev' ? page - 1 : page + 1}">
+                    <svg class="search_icon">
+                        <use href="img/icons.svg#icon-triangle-${type === 'prev' ? 'left' : 'next'}"></use>
+                    </svg>
+                    <span>Page${type === 'prev' ? page - 1 : page + 1}</span>
+                </button>`;
+
+const renderPaginationButtons = (page, resultNumber, resultsPerPage) => {
+    const pages = Math.ceil(resultNumber / resultsPerPage);
+    let button;
+    switch (true) {
+        case page === 1:
+            //Show only button go to next page
+            button = createPaginationButtons(page, 'next');
+            break;
+        case page === pages:
+            //Show both buttons previous / next
+            button = `${createPaginationButtons(page, 'next')}
+            ${createPaginationButtons(page, 'prev')}`;
+
+            break;
+        case page === pages && pages > 1:
+            //Show only button go to previous page
+            button = createPaginationButtons(page, 'prev');
+            break;
+    }
+    domElements.searchResultPagination.insertAdjacentHTML('afterbegin', button);
+
+
+};
+
+export const printResults = (recipes, page = 1, resPerPage = 10) => {
+
+    //render results of current page
     const start = (page - 1) * resPerPage;
     const end = page * resPerPage;
-    recipes.slice(start, end).forEach((e)=>{
-        if (validURL(e.thumbnail)){
+    recipes.slice(start, end).forEach((e) => {
+        if (validURL(e.thumbnail)) {
             e.author = e.href.split('/')[2].replace('www.', '');
             printRecipe(e);
-        }else {
+        } else {
             e.author = e.href.split('/')[2].replace('www.', '');
             e.thumbnail = 'images/no-image.png';
             printRecipe(e);
         }
 
     });
+
+    //Render Pagination Buttons
+    renderPaginationButtons(page, recipes.length, resPerPage);
 };
 
 /*

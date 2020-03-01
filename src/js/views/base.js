@@ -9,7 +9,8 @@ export const domElements = {
     searchForm: document.querySelector('.search'),
     searchInput: document.querySelector('.search_field'),
     resultArea: document.querySelector('.results'),
-    searchResultList: document.querySelector('.results_list')
+    searchResultList: document.querySelector('.results_list'),
+    searchResultPagination: document.querySelector('.results_pages')
 };
 
 export const elementStrings = {
