@@ -7,6 +7,7 @@ export const clearInput = () => {
 };
 export const clearResults = () => {
     domElements.searchResultList.innerHTML = "";
+    domElements.searchResultPagination.innerHTML = "";
 };
 const printRecipe = recipe => {
     const markup = `
@@ -32,7 +33,7 @@ const printRecipe = recipe => {
  */
 const createPaginationButtons = (page, type) => `         
          
-                 <button class="btn-inline results_btn--${type}" data-goto="${type === 'prev' ? page - 1 : page + 1}">
+                 <button class="btn-inline results_btn--${type}" data-goto="${type === 'prev' ? page - 1 : page + 1}"
                     <span>Page${type === 'prev' ? page - 1 : page + 1}</span>
                     <span  class="fa fa-arrow-circle-${type === 'prev' ? 'left' : 'right'}"></span>
                 </button>`;
@@ -63,7 +64,7 @@ const renderPaginationButtons = (page, resultNumber, resultsPerPage) => {
 
 };
 
-export const printResults = (recipes, page = 2, resPerPage = 10) => {
+export const printResults = (recipes, page = 1, resPerPage = 10) => {
 
     //render results of current page
     const start = (page - 1) * resPerPage;

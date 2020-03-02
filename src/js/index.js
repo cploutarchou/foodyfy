@@ -16,7 +16,7 @@ const controlSearch = async () => {
 
     if (query) {
         // 2) New Search object and add to the state
-        state.search = new Search(50, query, '');
+        state.search = new Search(200, query, '');
 
         // 3) Prepare UI For search results
         searchView.clearInput();
@@ -35,6 +35,14 @@ domElements.searchForm.addEventListener('submit', (e) => {
     e.preventDefault();
     controlSearch().then(r => {
     });
+});
+domElements.searchResultPagination.addEventListener('click', e => {
+    const btn = e.target.closest('.btn-inline');
+    if (btn) {
+        const goToPage = parseInt(btn.dataset.goto, 10);
+        searchView.clearResults();
+        searchView.printResults(state.search.results,goToPage);
+    }
 });
 
 
