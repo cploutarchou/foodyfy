@@ -1,4 +1,4 @@
-import {RECIPES_API} from '../constants';
+import {RECIPES_API,SETTINGS} from '../config';
 import axios from 'axios';
 
 export default class Search {

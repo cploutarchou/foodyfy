@@ -1,3 +1,10 @@
+/**
+ * Created by Christos Ploutarchou
+ * Project : foodyfy
+ * Filename : config.js
+ * Date: 3/2/2020
+ * Time: 1:09 PM
+ **/
 export const RECIPES_API = {};
 export const SETTINGS = {};
 
