@@ -39,7 +39,7 @@ const createPaginationButtons = (page, type) => `
                 </button>`;
 
 const renderPaginationButtons = (page, resultNumber, resultsPerPage) => {
-    const pages = Math.ceil(resultNumber / resultsPerPage);
+    const pages = Math.ceil(resultNumber / resultsPerPage);    
     let button;
     switch (true) {
         case page === 1:
@@ -67,7 +67,8 @@ const renderPaginationButtons = (page, resultNumber, resultsPerPage) => {
 export const printResults = (recipes, page = 1, resPerPage = 10) => {
 
     //render results of current page
-    const start = (page - 1) * resPerPage;
+    const start = (page-1) * resPerPage;
+    
     const end = page * resPerPage;
     recipes.slice(start, end).forEach((e) => {
         if (validURL(e.thumbnail)) {
@@ -79,8 +80,7 @@ export const printResults = (recipes, page = 1, resPerPage = 10) => {
             printRecipe(e);
         }
 
-    });
-
+    });    
     //Render Pagination Buttons
     renderPaginationButtons(page, recipes.length, resPerPage);
 };
