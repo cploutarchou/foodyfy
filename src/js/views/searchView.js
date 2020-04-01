@@ -1,89 +1,89 @@
-import {domElements, validURL} from './base';
+import { domElements, validURL } from "./base";
 
 export const getInput = () => domElements.searchInput.value;
 
 export const clearInput = () => {
-    domElements.searchInput.value = "";
+  domElements.searchInput.value = "";
 };
 export const clearResults = () => {
-    domElements.searchResultList.innerHTML = "";
-    domElements.searchResultPagination.innerHTML = "";
+  domElements.searchResultList.innerHTML = "";
+  domElements.searchResultPagination.innerHTML = "";
 };
-const printRecipe = recipe => {
-    const markup = `
+const printRecipe = (recipe) => {
+  const markup = `
      <li><a class="results_link" href="${recipe.href}">
                         <figure class="results_fig">
-                            <img src="${recipe.thumbnail}" alt="${recipe.title}">
+                            <img src="${recipe.thumbnail}" alt="${
+    recipe.title
+  }">
                         </figure>
                         <div class="results_data">
-                            <h4 class="results_name">${stringLengthLimit(recipe.title)}</h4>
+                            <h4 class="results_name">${stringLengthLimit(
+                              recipe.title
+                            )}</h4>
                             <p class="results_author">${recipe.author}</p>
                         </div>
                     </a>
  </li>
 `;
-    domElements.searchResultList.insertAdjacentHTML('beforeend', markup);
+  domElements.searchResultList.insertAdjacentHTML("beforeend", markup);
 };
 
-/**
- *
- * @param page
- * @param type
- * @returns {string}
- */
 const createPaginationButtons = (page, type) => `         
          
-                 <button class="btn-inline results_btn--${type}" data-goto="${type === 'prev' ? page - 1 : page + 1}"
-                    <span>Page${type === 'prev' ? page - 1 : page + 1}</span>
-                    <span  class="fa fa-arrow-circle-${type === 'prev' ? 'left' : 'right'}"></span>
+                 <button class="btn-inline results_btn--${type}" data-goto="${
+  type === "prev" ? page - 1 : page + 1
+}"
+                    <span>Page${type === "prev" ? page - 1 : page + 1}</span>
+                    <span  class="fa fa-arrow-circle-${
+                      type === "prev" ? "left" : "right"
+                    }"></span>
                 </button>`;
 
 const renderPaginationButtons = (page, resultNumber, resultsPerPage) => {
-    const pages = Math.ceil(resultNumber / resultsPerPage);    
-    let button;
-    switch (true) {
-        case page === 1:
-            //Show only button go to next page
-            button = createPaginationButtons(page, 'next');
-            break;
-        case page < pages:
-            //Show both buttons previous / next
-            button = `
-            ${createPaginationButtons(page, 'next')}
-            ${createPaginationButtons(page, 'prev')}`
-            ;
+  const pages = Math.ceil(resultNumber / resultsPerPage);
+  let button;
+  switch (true) {
+    case page === 1:
+      // Show only button go to next page
+      button = createPaginationButtons(page, "next");
+      break;
+    case page < pages:
+      // Show both buttons previous / next
+      button = `
+            ${createPaginationButtons(page, "next")}
+            ${createPaginationButtons(page, "prev")}`;
 
-            break;
-        case page === pages && pages > 1:
-            //Show only button go to previous page
-            button = createPaginationButtons(page, 'prev');
-            break;
-    }
-    domElements.searchResultPagination.insertAdjacentHTML('afterbegin', button);
-
-
+      break;
+    case page === pages && pages > 1:
+      // Show only button go to previous page
+      button = createPaginationButtons(page, "prev");
+      break;
+  }
+  domElements.searchResultPagination.insertAdjacentHTML("afterbegin", button);
 };
 
 export const printResults = (recipes, page = 1, resPerPage = 10) => {
 
-    //render results of current page
-    const start = (page-1) * resPerPage;
-    
-    const end = page * resPerPage;
-    recipes.slice(start, end).forEach((e) => {
-        if (validURL(e.thumbnail)) {
-            e.author = e.href.split('/')[2].replace('www.', '');
-            printRecipe(e);
-        } else {
-            e.author = e.href.split('/')[2].replace('www.', '');
-            e.thumbnail = 'images/no-image.png';
-            printRecipe(e);
-        }
+  //render results of current page
+  const start = (page - 1) * resPerPage;
+  const end = page * resPerPage;
+  recipes.slice(start, end).forEach((e) => {
+    if (validURL(e.thumbnail)) {
+      e.author = e.href.split('/')[2].replace('www.', '');
+      printRecipe(e);
+    } else {
+      e.author = e.href.split('/')[2].replace('www.', '');
+      e.thumbnail = 'images/no-image.png';
+      printRecipe(e);
+    }
 
-    });    
-    //Render Pagination Buttons
-    renderPaginationButtons(page, recipes.length, resPerPage);
+  });
+
+  //Render Pagination Buttons
+  renderPaginationButtons(page, recipes.length, resPerPage);
 };
+
 
 /*
 // STRING Title = Pasta with Tomato and spinach
@@ -95,17 +95,17 @@ acc : 18 / acc + cur.length = 18 / newTitle = ['Pasta','with','Tomato'] -> The w
 acc : 18 / acc + cur.length = 18 / newTitle = ['Pasta','with','Tomato'] -> The word 'spinach' not passed on array newTitle
 */
 const stringLengthLimit = (title, limit = 20) => {
-    const newTitle = [];
-    if (title.length > limit) {
-        title.split(' ').reduce((acc, cur) => {
-            if (acc + cur.length <= limit) {
-                newTitle.push(cur);
-            }
-            return acc + cur.length;
-        }, 0);
+  const newTitle = [];
+  if (title.length > limit) {
+    title.split(" ").reduce((acc, cur) => {
+      if (acc + cur.length <= limit) {
+        newTitle.push(cur);
+      }
+      return acc + cur.length;
+    }, 0);
 
-        return `${newTitle.join(' ')}...`;
-    }
+    return `${newTitle.join(" ")}...`;
+  }
 
-    return title;
+  return title;
 };

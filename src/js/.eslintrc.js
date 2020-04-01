@@ -15,5 +15,9 @@ module.exports = {
     sourceType: 'module'
   },
   rules: {
+    "semi": ["error", "always"],
+    "quotes": ["error", "double"],
+    "no-trailing-spaces" :["error", { "skipBlankLines": true }],
+   "padded-blocks": ["error", "never"]
   }
-}
+};
