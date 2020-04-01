@@ -23,10 +23,11 @@ const controlSearch = async () => {
         searchView.clearResults();
         loader(domElements.resultArea, true);
         // 4 ) Search for recipes
-        await state.search.getRecipePuppyResults();
+        await state.search.getResults();
         // 5) Render results on UI
         // console.log(state.search.results);
         loader(domElements.resultArea, false);
+        console.log(state.search.results);
         searchView.printResults(state.search.results);
     }
 
@@ -41,7 +42,7 @@ domElements.searchResultPagination.addEventListener('click', e => {
     if (btn) {
         const goToPage = parseInt(btn.dataset.goto, 10);
         searchView.clearResults();
-        searchView.printResults(state.search.results,goToPage);
+        searchView.printResults(state.search.results, goToPage);
     }
 });
 
