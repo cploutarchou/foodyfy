@@ -14,13 +14,13 @@ const printRecipe = (recipe) => {
      <li><a class="results_link" href="${recipe.href}">
                         <figure class="results_fig">
                             <img src="${recipe.thumbnail}" alt="${
-    recipe.title
-  }">
+        recipe.title
+    }">
                         </figure>
                         <div class="results_data">
                             <h4 class="results_name">${stringLengthLimit(
-                              recipe.title
-                            )}</h4>
+        recipe.title
+    )}</h4>
                             <p class="results_author">${recipe.author}</p>
                         </div>
                     </a>
@@ -32,19 +32,19 @@ const printRecipe = (recipe) => {
 const createPaginationButtons = (page, type) => `         
          
                  <button class="btn-inline results_btn--${type}" data-goto="${
-  type === "prev" ? page - 1 : page + 1
+    type === "prev" ? page - 1 : page + 1
 }"
                     <span>Page${type === "prev" ? page - 1 : page + 1}</span>
                     <span  class="fa fa-arrow-circle-${
-                      type === "prev" ? "left" : "right"
-                    }"></span>
+    type === "prev" ? "left" : "right"
+}"></span>
                 </button>`;
 
 const renderPaginationButtons = (page, resultNumber, resultsPerPage) => {
   const pages = Math.ceil(resultNumber / resultsPerPage);
   let button;
   switch (true) {
-    case page === 1:
+    case page === 1 && pages > 1:
       // Show only button go to next page
       button = createPaginationButtons(page, "next");
       break;
@@ -64,26 +64,26 @@ const renderPaginationButtons = (page, resultNumber, resultsPerPage) => {
 };
 
 export const printResults = (recipes, page = 1, resPerPage = 10) => {
-
-  //render results of current page
+  // render results of current page
   const start = (page - 1) * resPerPage;
   const end = page * resPerPage;
-  recipes.slice(start, end).forEach((e) => {
+
+  recipes.slice(start, end).forEach(e => {
+    // console.log(e);
     if (validURL(e.thumbnail)) {
-      e.author = e.href.split('/')[2].replace('www.', '');
+      e.author = e.href.split("/")[2].replace("www.", "");
       printRecipe(e);
     } else {
-      e.author = e.href.split('/')[2].replace('www.', '');
-      e.thumbnail = 'images/no-image.png';
+      e.author = e.href.split("/")[2].replace("www.", "");
+      e.thumbnail = "images/no-image.png";
       printRecipe(e);
     }
-
   });
-
-  //Render Pagination Buttons
-  renderPaginationButtons(page, recipes.length, resPerPage);
+  // Render Pagination Buttons
+  if (recipes.length !== 10) {
+    renderPaginationButtons(page, recipes.length, resPerPage);
+  }
 };
-
 
 /*
 // STRING Title = Pasta with Tomato and spinach
