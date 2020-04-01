@@ -1,7 +1,7 @@
 // Global Application Controller
-import Search from "./models/Search";
-import {domElements, loader} from "./views/base";
-import * as searchView from './views/searchView';
+import Search from "models/Search";
+import {domElements, loader} from "views/base";
+import * as searchView from 'views/searchView';
 
 /** Global State of App
  * - Search object
@@ -16,7 +16,7 @@ const controlSearch = async () => {
 
     if (query) {
         // 2) New Search object and add to the state
-        state.search = new Search(200, query, '');
+        state.search = new Search(100, query, '');
 
         // 3) Prepare UI For search results
         searchView.clearInput();
@@ -26,9 +26,10 @@ const controlSearch = async () => {
         await state.search.getResults();
         // 5) Render results on UI
         // console.log(state.search.results);
-        loader(domElements.resultArea, false);
-        console.log(state.search.results);
-        searchView.printResults(state.search.results);
+        setTimeout(() => {
+            loader(domElements.resultArea, false);
+            searchView.printResults(state.search.results);
+        },500);
     }
 
 };
