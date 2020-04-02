@@ -16,8 +16,8 @@ const controlSearch = async () => {
   const query = searchView.getQueryInput();
   const ingredients = searchView.getIngredientsInput();
   const ingredientsCheck = ingredients.split(",");
-  // Check if ingredients is more that one
-  if (ingredientsCheck.length > 1) {
+  // Check if ingredients is more that one or is empty
+  if (ingredientsCheck.length > 1 || ingredientsCheck[0] === "") {
     if (query || ingredients) {
       // 2) New Search object and add to the state
       state.search = new Search(450, query, ingredients);
