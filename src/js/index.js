@@ -2,6 +2,7 @@
 import Search from "./models/Search";
 import { domElements, loader } from "./views/base";
 import * as searchView from "./views/searchView";
+import swal from "sweetalert";
 
 /** Global State of App
  * - Search object
@@ -12,20 +13,27 @@ import * as searchView from "./views/searchView";
 const state = {};
 const controlSearch = async () => {
   // 1)  Get query from view
-  const query = searchView.getInput(); // TODO
-  if (query) {
-    // 2) New Search object and add to the state
-    state.search = new Search(100, query, "");
-    // 3) Prepare UI For search results
-    searchView.clearInput();
-    searchView.clearResults();
-    loader(domElements.resultArea, true);
-    // 4 ) Search for recipes
-    await state.search.getResults();
-    // 5) Render results on UI
-    // console.log(state.search.results);
-    loader(domElements.resultArea, false);
-    searchView.printResults(state.search.results);
+  const query = searchView.getQueryInput();
+  const ingredients = searchView.getIngredientsInput();
+  const ingredientsCheck = ingredients.split(",");
+  // Check if ingredients is more that one
+  if (ingredientsCheck.length > 1) {
+    if (query || ingredients) {
+      // 2) New Search object and add to the state
+      state.search = new Search(450, query, ingredients);
+      // 3) Prepare UI For search results
+      searchView.clearInput();
+      searchView.clearResults();
+      loader(domElements.resultArea, true);
+      // 4 ) Search for recipes
+      await state.search.getResults();
+      // 5) Render results on UI
+      // console.log(state.search.results);
+      loader(domElements.resultArea, false);
+      searchView.printResults(state.search.results);
+    }
+  } else {
+    swal("Oops!", "You must enter more than one ingredient separated by ,", "error");
   }
 };
 

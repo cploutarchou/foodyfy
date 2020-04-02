@@ -27,22 +27,13 @@ export default class Search {
     const data = [];
     for (let page = start; page < i; page++) {
       const config = {
-        url: `${this.recipePuppy.url}?p=${page}${this.ingredients}${this.query}`,
-        method: this.recipePuppy.method,
-        headers: {
-          "x-rapidapi-host": this.recipePuppy.apiHost,
-          "x-rapidapi-key": this.recipePuppy.apiKey,
-          "X-XSS-Protection": "1; mode=block",
-          "X-Frame-Options": "SAMEORIGIN",
-          "X-Content-Type-Options": "nosniff",
-          "Strict-Transport-Security": " max-age=31536000; includeSubDomains; preload"
-        }
+        url: `${this.recipePuppy.url}?${this.ingredients}${this.query}&p=${page}`
       };
       try {
         const res = await axios(config);
         data.push(...res.data.results);
       } catch (e) {
-        alert(e);
+        console.log(e);
       }
     }
 

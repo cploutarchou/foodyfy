@@ -767,3 +767,13 @@ body {
         transform: rotate(360deg);
     }
 }
+.separator{
+    border-left: 3px solid #4f536a;
+    height: 40px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+input[type="text"]{
+    padding-left: 25px;
+}

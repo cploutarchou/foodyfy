@@ -1,9 +1,11 @@
 import { domElements, validURL } from "./base";
 
-export const getInput = () => domElements.searchInput.value;
+export const getQueryInput = () => domElements.searchQueryInput.value;
+export const getIngredientsInput = () => domElements.searchIngredientsInput.value;
 
 export const clearInput = () => {
-  domElements.searchInput.value = "";
+  domElements.searchQueryInput.value = "";
+  domElements.searchIngredientsInput.value = "";
 };
 export const clearResults = () => {
   domElements.searchResultList.innerHTML = "";
