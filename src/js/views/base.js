@@ -8,7 +8,6 @@
 export const domElements = {
   searchForm: document.querySelector(".search"),
   searchQueryInput: document.querySelector(".search_field"),
-  searchIngredientsInput: document.querySelector("#ingredients"),
   resultArea: document.querySelector(".results"),
   searchResultList: document.querySelector(".results_list"),
   searchResultPagination: document.querySelector(".results_pages")

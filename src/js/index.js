@@ -2,8 +2,7 @@
 import Search from "./models/Search";
 import { domElements, loader } from "./views/base";
 import * as searchView from "./views/searchView";
-import swal from "sweetalert";
-import Recipe from './models/Recipe';
+// import Recipe from "./models/Recipe";
 
 /** Global State of App
  * - Search object
@@ -18,26 +17,21 @@ const state = {};
 const controlSearch = async () => {
   // 1)  Get query from view
   const query = searchView.getQueryInput();
-  const ingredients = searchView.getIngredientsInput();
-  const ingredientsCheck = ingredients.split(",");
-  // Check if ingredients is more that one or is empty
-  if (ingredientsCheck.length > 1 || ingredientsCheck[0] === "") {
-    if (query || ingredients) {
-      // 2) New Search object and add to the state
-      state.search = new Search(450, query, ingredients);
-      // 3) Prepare UI For search results
-      searchView.clearInput();
-      searchView.clearResults();
-      loader(domElements.resultArea, true);
-      // 4 ) Search for recipes
-      await state.search.getResults();
-      // 5) Render results on UI
-      // console.log(state.search.results);
-      loader(domElements.resultArea, false);
-      searchView.printResults(state.search.results);
-    }
-  } else {
-    swal("Oops!", "You must enter more than one ingredient separated by ,", "error");
+  console.log(query);
+  
+  if (query) {
+    // 2) New Search object and add to the state
+    state.search = new Search(query);
+    // 3) Prepare UI For search results
+    searchView.clearInput();
+    searchView.clearResults();
+    loader(domElements.resultArea, true);
+    // 4 ) Search for recipes
+    await state.search.getResults();
+    // 5) Render results on UI
+    // console.log(state.search.results);
+    loader(domElements.resultArea, false);
+    searchView.printResults(state.search.result);
   }
 };
 
@@ -58,4 +52,4 @@ domElements.searchResultPagination.addEventListener("click", e => {
 /**
  * RECIPE CONTROLLER
  */
-const r = new Recipe();
+// const r = new Recipe();

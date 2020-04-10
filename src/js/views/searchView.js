@@ -1,11 +1,9 @@
-import { domElements, validURL } from "./base";
+import { domElements } from "./base";
 
 export const getQueryInput = () => domElements.searchQueryInput.value;
-export const getIngredientsInput = () => domElements.searchIngredientsInput.value;
 
 export const clearInput = () => {
   domElements.searchQueryInput.value = "";
-  domElements.searchIngredientsInput.value = "";
 };
 export const clearResults = () => {
   domElements.searchResultList.innerHTML = "";
@@ -13,9 +11,9 @@ export const clearResults = () => {
 };
 const printRecipe = (recipe) => {
   const markup = `
-     <li><a class="results_link" href="${recipe.href}">
+     <li><a class="results_link" href="#${recipe.recipe_id}">
                         <figure class="results_fig">
-                            <img src="${recipe.thumbnail}" alt="${
+                            <img src="${recipe.image_url}" alt="${
         recipe.title
     }">
                         </figure>
@@ -23,7 +21,7 @@ const printRecipe = (recipe) => {
                             <h4 class="results_name">${stringLengthLimit(
         recipe.title
     )}</h4>
-                            <p class="results_author">${recipe.author}</p>
+                            <p class="results_author">${recipe.publisher}</p>
                         </div>
                     </a>
  </li>
@@ -67,24 +65,13 @@ const renderPaginationButtons = (page, resultNumber, resultsPerPage) => {
 
 export const printResults = (recipes, page = 1, resPerPage = 10) => {
   // render results of current page
+  // console.log(e);
   const start = (page - 1) * resPerPage;
   const end = page * resPerPage;
 
-  recipes.slice(start, end).forEach(e => {
-    console.log(e);
-    if (validURL(e.thumbnail)) {
-      e.author = e.href.split("/")[2].replace("www.", "");
-      printRecipe(e);
-    } else {
-      e.author = e.href.split("/")[2].replace("www.", "");
-      e.thumbnail = "images/no-image.png";
-      printRecipe(e);
-    }
-  });
+  recipes.slice(start, end).forEach(printRecipe);
   // Render Pagination Buttons
-  if (recipes.length !== 10 && recipes.length > 10) {
-    renderPaginationButtons(page, recipes.length, resPerPage);
-  }
+  renderPaginationButtons(page, recipes.length, resPerPage);
 };
 
 /*
