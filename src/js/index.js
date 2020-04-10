@@ -17,8 +17,6 @@ const state = {};
 const controlSearch = async () => {
   // 1)  Get query from view
   const query = searchView.getQueryInput();
-  console.log(query);
-  
   if (query) {
     // 2) New Search object and add to the state
     state.search = new Search(query);
@@ -45,7 +43,7 @@ domElements.searchResultPagination.addEventListener("click", e => {
   if (btn) {
     const goToPage = parseInt(btn.dataset.goto, 10);
     searchView.clearResults();
-    searchView.printResults(state.search.results, goToPage);
+    searchView.printResults(state.search.result, goToPage);
   }
 });
 

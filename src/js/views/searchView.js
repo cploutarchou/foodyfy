@@ -42,23 +42,20 @@ const createPaginationButtons = (page, type) => `
 
 const renderPaginationButtons = (page, resultNumber, resultsPerPage) => {
   const pages = Math.ceil(resultNumber / resultsPerPage);
-  let button;
-  switch (true) {
-    case page === 1 && pages > 1:
-      // Show only button go to next page
-      button = createPaginationButtons(page, "next");
-      break;
-    case page < pages:
-      // Show both buttons previous / next
-      button = `
-            ${createPaginationButtons(page, "next")}
-            ${createPaginationButtons(page, "prev")}`;
 
-      break;
-    case page === pages && pages > 1:
-      // Show only button go to previous page
-      button = createPaginationButtons(page, "prev");
-      break;
+  let button;
+  if (page === 1 && pages > 1) {
+    // Only button to go to next page
+    button = createPaginationButtons(page, "next");
+  } else if (page < pages) {
+    // Both buttons
+    button = `
+          ${createPaginationButtons(page, "prev")}
+          ${createPaginationButtons(page, "next")}
+      `;
+  } else if (page === pages && pages > 1) {
+    // Only button to go to prev page
+    button = createPaginationButtons(page, "prev");
   }
   domElements.searchResultPagination.insertAdjacentHTML("afterbegin", button);
 };
@@ -68,21 +65,13 @@ export const printResults = (recipes, page = 1, resPerPage = 10) => {
   // console.log(e);
   const start = (page - 1) * resPerPage;
   const end = page * resPerPage;
-
+  console.log(recipes);
   recipes.slice(start, end).forEach(printRecipe);
   // Render Pagination Buttons
   renderPaginationButtons(page, recipes.length, resPerPage);
 };
 
-/*
-// STRING Title = Pasta with Tomato and spinach
-acc : 0 / acc + cur.length = 5 / newTitle = ['Pasta']
-acc : 5 / acc + cur.length = 9 / newTitle = ['Pasta','with']
-acc : 9 / acc + cur.length = 15 / newTitle = ['Pasta','with','Tomato']
-acc : 15 / acc + cur.length = 18 / newTitle = ['Pasta','with','Tomato']
-acc : 18 / acc + cur.length = 18 / newTitle = ['Pasta','with','Tomato'] -> The word 'and' not passed on array newTitle
-acc : 18 / acc + cur.length = 18 / newTitle = ['Pasta','with','Tomato'] -> The word 'spinach' not passed on array newTitle
-*/
+
 const stringLengthLimit = (title, limit = 20) => {
   const newTitle = [];
   if (title.length > limit) {
