@@ -3,6 +3,7 @@ import Search from "./models/Search";
 import { domElements, loader } from "./views/base";
 import * as searchView from "./views/searchView";
 import swal from "sweetalert";
+import Recipe from './models/Recipe';
 
 /** Global State of App
  * - Search object
@@ -11,6 +12,9 @@ import swal from "sweetalert";
  *
  */
 const state = {};
+/**
+ * SEARCH CONTROLLER
+ */
 const controlSearch = async () => {
   // 1)  Get query from view
   const query = searchView.getQueryInput();
@@ -50,3 +54,8 @@ domElements.searchResultPagination.addEventListener("click", e => {
     searchView.printResults(state.search.results, goToPage);
   }
 });
+
+/**
+ * RECIPE CONTROLLER
+ */
+const r = new Recipe();

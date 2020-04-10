@@ -71,7 +71,7 @@ export const printResults = (recipes, page = 1, resPerPage = 10) => {
   const end = page * resPerPage;
 
   recipes.slice(start, end).forEach(e => {
-    // console.log(e);
+    console.log(e);
     if (validURL(e.thumbnail)) {
       e.author = e.href.split("/")[2].replace("www.", "");
       printRecipe(e);
@@ -82,7 +82,7 @@ export const printResults = (recipes, page = 1, resPerPage = 10) => {
     }
   });
   // Render Pagination Buttons
-  if (recipes.length !== 10) {
+  if (recipes.length !== 10 && recipes.length > 10) {
     renderPaginationButtons(page, recipes.length, resPerPage);
   }
 };
